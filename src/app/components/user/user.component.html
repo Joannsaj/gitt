@@ -1,0 +1,4 @@
+<form (ngSubmit)='submitName()' #userForm='ngForm'>
+    <input type="text" placeholder="Username.." [(ngModel)]="searchUserName" #searhUserName="ngModel" name="search">
+    <button mat-button color='' type="submit">Search</button>
+</form>
