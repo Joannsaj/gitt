@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from "src/app/home-service/home.service"
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  users;
 
-  constructor() { }
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+
+    this.users = this.homeService.getMyGit()
+
   }
 
 }
