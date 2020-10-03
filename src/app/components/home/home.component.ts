@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from "src/app/home-service/home.service"
+import { HomeService } from "src/app/home-service/home.service";
+import { UserService } from 'src/app/user-service/user.service';
+import { User } from 'src/app/user';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +9,25 @@ import { HomeService } from "src/app/home-service/home.service"
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  users;
+  repos;
+  users: User;
 
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private userService: UserService) { }
 
   ngOnInit(): void {
 
-    this.users = this.homeService.getMyGit()
+    this.repos = this.homeService.getMyGit()
 
   }
-
+  getUserName(term: string) {
+    this.userService.getUserName(term).then(
+      () => {
+        this.users = this.userService.user;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }

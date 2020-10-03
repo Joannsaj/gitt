@@ -13,7 +13,7 @@ export class UserService {
     this.user = new User("", 0, "", new Date());;
   }
 
-  quoteRequest(userName: string) {
+  getUserName(userName: string) {
     interface ApiResult {
       login: string;
       public_repos: number;

@@ -1,4 +1,12 @@
-<form (ngSubmit)='submitName()' #userForm='ngForm'>
-    <input type="text" placeholder="Username.." [(ngModel)]="searchUserName" #searhUserName="ngModel" name="search">
-    <button mat-button color='' type="submit">Search</button>
+<form (ngSubmit)='submitName()' #userForm='ngForm' class="example">
+    <input type="text" placeholder="Username.." [(ngModel)]="searchUserName" name="search">
+    <button mat-raised-button color='primary' type="submit">Search</button>
 </form>
+<!-- <div class="row">
+    <div class="col-md-7">
+        <img [src]="{{users.avatar_url}}" alt="">
+        <h2>Username:{{users.login}}</h2>
+        <h3>Repositories:{{users.public_repos}}</h3>
+        <h4>Created on:{{users.created_at|date}}</h4>
+    </div>
+</div> -->

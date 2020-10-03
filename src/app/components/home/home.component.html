@@ -1,3 +1,12 @@
-<div *ngFor="let user of users | async">
-    <mat-card> {{ user.name }}</mat-card>
+<app-user (userName)="getUserName($event)"></app-user>
+<!-- <div class="row">
+    <div class="col-md-7">
+        <img [src]="{{users.avatar_url}}" alt="">
+        <h2>Username:{{users.login}}</h2>
+        <h3>Repositories:{{users.public_repos}}</h3>
+        <h4>Created on:{{users.created_at|date}}</h4>
+    </div>
+</div> -->
+<div *ngFor="let repo of repos | async">
+    <mat-card> {{ repo.name }}</mat-card>
 </div>
