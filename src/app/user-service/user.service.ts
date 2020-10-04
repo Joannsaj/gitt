@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/user';
-import { environment } from 'src/environments/environment'
-import { HttpClient } from '@angular/common/http'
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Repository } from 'src/app/repository';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   users: User;
+  repositories: Repository;
+  thisrepository: any;
 
   constructor(private http: HttpClient) {
-    this.users = new User("", 0, "", new Date());;
+    this.users = new User("", 0, "", new Date());
+    this.repositories = new Repository("", "", "", new Date());
   }
 
   getUserName(data) {
@@ -37,6 +41,28 @@ export class UserService {
             this.users.public_repos = 0;
             this.users.avatar_url = '';
 
+
+            reject(error)
+          })
+    })
+    return promise
+  }
+  getRepositories(user) {
+    interface ApiResult {
+      name: string,
+      description: string,
+      language: string,
+      created_at: Date
+    }
+    let promise = new Promise((resolve, reject) => {
+      this.http.get<ApiResult>(`https://api.github.com/users/` + user + `?access_token=` + environment.accessToken)
+        .toPromise()
+        .then(result => {
+          this.thisrepository = result;
+
+          resolve()
+        },
+          error => {
 
             reject(error)
           })
