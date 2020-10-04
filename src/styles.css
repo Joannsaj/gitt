@@ -1,13 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+@import "~bootstrap/dist/css/bootstrap.css";
+html, body { 
+  height: 100%;
+ }
+body { 
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+ }
+ form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  font-size: 17px;
+  cursor: pointer;
+} 

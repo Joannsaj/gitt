@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { UserComponent } from './components/user/user.component';
 import { DateCountPipe } from './date-count.pipe';
 import { RepoComponent } from './components/repo/repo.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RepoComponent } from './components/repo/repo.component';
     HomeComponent,
     UserComponent,
     DateCountPipe,
-    RepoComponent
+    RepoComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
