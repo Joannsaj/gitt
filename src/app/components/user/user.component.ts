@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserName } from 'src/app/user-name';
 
 @Component({
   selector: 'app-user',
@@ -6,11 +7,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  searchUserName: string = ""
-  @Output() userName = new EventEmitter<String>();
+  searchUserName = new UserName('')
 
-  submitName() {
-    this.userName.emit(this.searchUserName);
+  @Output() searching = new EventEmitter<UserName>();
+
+  search(term) {
+    this.searching.emit(term.value.username);
+    term.reset()
   }
   constructor() { }
 

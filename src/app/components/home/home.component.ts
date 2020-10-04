@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from "src/app/home-service/home.service";
 import { UserService } from 'src/app/user-service/user.service';
 import { User } from 'src/app/user';
 
@@ -9,25 +8,20 @@ import { User } from 'src/app/user';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  repos;
+  public user = 'Joannsaj'
   users: User;
 
+  finduser(username) {
+    this.user = username;
+    this.ngOnInit();
+  }
 
-  constructor(private homeService: HomeService, private userService: UserService) { }
+  constructor(private userServiceRequest: UserService) { }
 
   ngOnInit(): void {
-
-    this.repos = this.homeService.getMyGit()
+    this.userServiceRequest.getUserName(this.user);
+    this.users = this.userServiceRequest.users;
 
   }
-  getUserName(term: string) {
-    this.userService.getUserName(term).then(
-      () => {
-        this.users = this.userService.user;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+
 }

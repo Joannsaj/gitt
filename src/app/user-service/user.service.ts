@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class UserService {
-  user: User;
+  users: User;
 
   constructor(private http: HttpClient) {
-    this.user = new User("", 0, "", new Date());;
+    this.users = new User("", 0, "", new Date());;
   }
 
-  getUserName(userName: string) {
+  getUserName(data) {
     interface ApiResult {
       login: string;
       public_repos: number;
@@ -21,23 +21,25 @@ export class UserService {
       created_at: Date;
     }
     let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResult>(`https://api.github.com/users/${userName}?access_token=${environment.accessToken}`).toPromise().then(result => {
+      this.http.get<ApiResult>(`https://api.github.com/users/` + data + `?access_token=` + environment.accessToken)
+        .toPromise()
+        .then(result => {
 
-        this.user.login = result.login
-        this.user.public_repos = result.public_repos
-        this.user.avatar_url = result.avatar_url
-        this.user.created_at = result.created_at
+          this.users.login = result.login;
+          this.users.public_repos = result.public_repos;
+          this.users.avatar_url = result.avatar_url;
+          this.users.created_at = result.created_at;
 
-        resolve()
-      },
-        error => {
-          this.user.login = 'Bad Credentials'
-          this.user.public_repos = 0
-          this.user.avatar_url = ''
+          resolve()
+        },
+          error => {
+            this.users.login = 'Bad Credentials';
+            this.users.public_repos = 0;
+            this.users.avatar_url = '';
 
 
-          reject(error)
-        })
+            reject(error)
+          })
     })
     return promise
   }
