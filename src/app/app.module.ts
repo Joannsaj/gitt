@@ -11,13 +11,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { UserComponent } from './components/user/user.component';
 import { DateCountPipe } from './date-count.pipe';
+import { RepoComponent } from './components/repo/repo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserComponent,
-    DateCountPipe
+    DateCountPipe,
+    RepoComponent
   ],
   imports: [
     BrowserModule,

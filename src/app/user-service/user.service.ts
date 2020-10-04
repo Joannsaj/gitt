@@ -54,8 +54,8 @@ export class UserService {
       language: string,
       created_at: Date
     }
-    let promise = new Promise((resolve, reject) => {
-      this.http.get<ApiResult>(`https://api.github.com/users/` + user + `?access_token=` + environment.accessToken)
+    let newPromise = new Promise((resolve, reject) => {
+      this.http.get<ApiResult>(`https://api.github.com/users/` + user + `/repos?access_token=` + environment.accessToken)
         .toPromise()
         .then(result => {
           this.thisrepository = result;
@@ -67,6 +67,6 @@ export class UserService {
             reject(error)
           })
     })
-    return promise
+    return newPromise;
   }
 }

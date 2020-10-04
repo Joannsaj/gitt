@@ -1,13 +1,22 @@
-<app-user (searching)="finduser($event)"></app-user>
-<div class="row">
-    <div class="col-md-7">
+<div class="container">
+    <app-user (searching)="finduser($event)"></app-user>
+    <div class="row">
+        <div class="col-md-7">
 
-        <img src="{{users.avatar_url}}">
-        <div>
-            <h2>Username:{{users.login}}</h2>
-            <h3>Repositories:{{users.public_repos}}</h3>
-            <h3>Created on:{{users.created_at|date}}</h3>
+            <img src="{{users.avatar_url}}">
+            <div>
+                <h2>Username:{{users.login}}</h2>
+                <h3>Repositories:{{users.public_repos}}</h3>
+                <h3>Created on:{{users.created_at|date}}</h3>
+            </div>
         </div>
-        <p>This repository was created {{users.created_at|dateCount}} days ago.</p>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngFor="let repository of repoServiceRequest.thisrepository">
+                <h3>{{repository.name}}</h3>
+            </div>
+        </div>
+    </div>
+    <app-repo></app-repo>
 </div>

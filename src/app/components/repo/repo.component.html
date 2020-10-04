@@ -1,0 +1,11 @@
+<p>repo works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div *ngFor="let repository of repoServiceRequest.thisrepository">
+            <h3>{{repository.name}}</h3>
+            <h3>{{repository.description}}</h3>
+            <h3>{{repository.language}}</h3>
+            <h3>{{repository.created_at|date}}</h3>
+        </div>
+    </div>
+</div>
