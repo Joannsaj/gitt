@@ -3,10 +3,10 @@
         <div class="col-md-12">
             <div class="card" *ngFor="let repository of repoServiceRequest.thisrepository">
                 <div class="card-body">
-                    <h3>{{repository.name}}</h3>
-                    <h3>{{repository.description}}</h3>
-                    <h3>{{repository.language}}</h3>
-                    <h3>{{repository.created_at|date}}</h3>
+                    <h3 appHighlight class="text-white">Project name: {{repository.name}}</h3>
+                    <h3>Description: {{repository.description}}</h3>
+                    <h3>Main language: {{repository.language}}</h3>
+                    <h3>Created on: {{repository.created_at|date}}</h3>
                 </div>
             </div>
         </div>
